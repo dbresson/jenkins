@@ -5,9 +5,10 @@
 # Do NOT modify this file by hand.
 #
 
+<% groups = ([@options[:new_resource].user, @options[:new_resource].group] + @options[:new_resource].supplementary_groups).join(':') %>
 exec 2>&1
 cd <%= @options[:new_resource].remote_fs %>
-exec chpst -u <%= @options[:new_resource].user %> \
+exec chpst -u <%= groups %> \
   env HOME=<%= @options[:new_resource].remote_fs %> \
   JENKINS_HOME=<%= @options[:new_resource].remote_fs %> \
   <%= @options[:java_bin] %> \

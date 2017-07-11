@@ -34,6 +34,9 @@ class Chef
               kind_of: String,
               default: 'jenkins',
               regex: Config[:group_valid_regex]
+    attribute :supplementary_groups,
+              kind_of: Array,
+              default: []
     attribute :service_name,
               kind_of: String,
               default: 'jenkins-slave'
